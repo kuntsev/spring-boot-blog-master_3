@@ -1,6 +1,7 @@
 package com.kuntsev;
 
 import com.kuntsev.config.MyAccessDeniedHandler;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +37,7 @@ public class MyAccessDeniedHandlerTest {
         handler.handle(request, response, exception);
 
         // Assert
-        assertEquals("/403", response.getRedirectedUrl());
+        Assertions.assertEquals("/403", response.getRedirectedUrl());
     }
 
     @Test
@@ -53,7 +54,7 @@ public class MyAccessDeniedHandlerTest {
         handler.handle(request, response, exception);
 
         // Assert
-        assertEquals("/my-context/403", response.getRedirectedUrl());
+        Assertions.assertEquals("/my-context/403", response.getRedirectedUrl());
     }
 }
 
