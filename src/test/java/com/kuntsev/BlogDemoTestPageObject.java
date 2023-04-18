@@ -1,10 +1,12 @@
 package com.kuntsev;
 import org.junit.*;
+
+import static java.time.Duration.ofSeconds;
 import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-public class BlogDemoTest {
+public class BlogDemoTestPageObject {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -14,20 +16,23 @@ public class BlogDemoTest {
     public void setUp() throws Exception {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\kuntsev\\Documents\\univer\\2022\\TA\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
+        js = (JavascriptExecutor) driver;
         baseUrl = "https://www.google.com/";
+        driver.get("http://localhost:8090/login");
         //driver.manage().timeouts().implicitlyWait(60);
         js = (JavascriptExecutor) driver;
     }
 
     @Test
     public void testUntitledTestCase() throws Exception {
-        driver.get("http://localhost:8090/login");
-        driver.findElement(By.linkText("Login")).click();
-        driver.findElement(By.id("username")).clear();
-        driver.findElement(By.id("username")).sendKeys("user");
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("password");
-        driver.findElement(By.xpath("//input[@value='Login']")).click();
+
+        LoginPage loginpage = new LoginPage(driver);
+        HomePage homePage =  loginpage.Login("user", "password");
+        PostPage postPage = homePage.clickNewPostButton();
+        BlogPage blogPage = postPage.AddPost("Title", "Post Body");
+
+
+        /*driver.findElement(By.xpath("//input[@value='Login']")).click();
         driver.get("http://localhost:8090/home");
         driver.findElement(By.linkText("New Post")).click();
         driver.get("http://localhost:8090/newPost");
@@ -47,17 +52,17 @@ public class BlogDemoTest {
         driver.findElement(By.id("body")).sendKeys("The best post I've read");
         driver.findElement(By.xpath("//button[@type='submit']")).click();
         driver.get("http://localhost:8090/post/13");
-        driver.findElement(By.linkText("Sign Out")).click();
+        driver.findElement(By.linkText("Sign Out")).click();*/
     }
 
-    @After
+   /*@After
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
         }
-    }
+    }*/
 
     private boolean isElementPresent(By by) {
         try {
