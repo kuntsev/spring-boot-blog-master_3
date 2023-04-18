@@ -55,14 +55,14 @@ public class BlogDemoTestPageObject {
         driver.findElement(By.linkText("Sign Out")).click();*/
     }
 
-   /*@After
+   @After
     public void tearDown() throws Exception {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
             fail(verificationErrorString);
         }
-    }*/
+    }
 
     private boolean isElementPresent(By by) {
         try {

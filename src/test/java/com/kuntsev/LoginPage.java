@@ -5,9 +5,14 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+
+
 
 
 public class LoginPage {
@@ -22,7 +27,7 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public HomePage Login(String username, String password) {
+    public HomePage Login(String username, String password) throws IOException {
 
         driver.findElement(By.linkText("Login")).click();
         SetUserName(username);
@@ -38,7 +43,10 @@ public class LoginPage {
         driver.findElement(By.id("password")).clear();
         driver.findElement(By.id("password")).sendKeys("password");
     }
-    public HomePage clickLoginButton(){
+    public HomePage clickLoginButton() throws IOException {
+      //add function to take screenshot
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(scrFile, new File("c:\\temp\\login.png"));
         driver.findElement(By.xpath("//input[@value='Login']")).click();
         driver.get("http://localhost:8090/home");
         return new HomePage(driver);
