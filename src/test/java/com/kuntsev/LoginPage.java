@@ -1,19 +1,10 @@
 package com.kuntsev;
-import org.junit.*;
-import static java.time.Duration.ofSeconds;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.TakesScreenshot;
 import java.io.File;
 import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
-
-
-
 
 public class LoginPage {
    private WebDriver driver;
@@ -51,7 +42,5 @@ public class LoginPage {
         driver.get("http://localhost:8090/home");
         return new HomePage(driver);
     }
-
-
 }
 

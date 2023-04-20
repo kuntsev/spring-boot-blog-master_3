@@ -29,30 +29,7 @@ public class BlogDemoTestPageObject {
         LoginPage loginpage = new LoginPage(driver);
         HomePage homePage =  loginpage.Login("user", "password");
         PostPage postPage = homePage.clickNewPostButton();
-        BlogPage blogPage = postPage.AddPost("Title", "Post Body");
-
-
-        /*driver.findElement(By.xpath("//input[@value='Login']")).click();
-        driver.get("http://localhost:8090/home");
-        driver.findElement(By.linkText("New Post")).click();
-        driver.get("http://localhost:8090/newPost");
-        driver.findElement(By.id("title")).click();
-        driver.findElement(By.id("title")).clear();
-        driver.findElement(By.id("title")).sendKeys("test post");
-        driver.findElement(By.id("body")).clear();
-        driver.findElement(By.id("body")).sendKeys("Test test Hello word");
-        driver.findElement(By.xpath("//input[@value='Save']")).click();
-        driver.get("http://localhost:8090/blog/user");
-        driver.findElement(By.linkText("test post")).click();
-        driver.get("http://localhost:8090/post/13");
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Comments:'])[1]/following::button[1]")).click();
-        driver.get("http://localhost:8090/commentPost/13");
-        driver.findElement(By.id("body")).click();
-        driver.findElement(By.id("body")).clear();
-        driver.findElement(By.id("body")).sendKeys("The best post I've read");
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        driver.get("http://localhost:8090/post/13");
-        driver.findElement(By.linkText("Sign Out")).click();*/
+        BlogPage blogPage = postPage.AddPost("New Mega Post", "Post_Body");
     }
 
    @After

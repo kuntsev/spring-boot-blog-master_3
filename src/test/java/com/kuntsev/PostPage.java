@@ -22,11 +22,11 @@ public class PostPage {
     public void SetTitle(String title) {
         driver.findElement(By.id("title")).click();
         driver.findElement(By.id("title")).clear();
-        driver.findElement(By.id("title")).sendKeys("testpost");
+        driver.findElement(By.id("title")).sendKeys(title);
     }
     public void SetPostBody(String body) {
         driver.findElement(By.id("body")).clear();
-        driver.findElement(By.id("body")).sendKeys("Test test Hello word");
+        driver.findElement(By.id("body")).sendKeys(body);
     }
     public BlogPage AddPost(String title, String body) throws IOException {
 
