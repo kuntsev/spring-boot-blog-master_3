@@ -2,10 +2,25 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+i
 
 public class LoginStepdefs {
+    private WebDriver driver;
+    private String baseUrl;
+    private boolean acceptNextAlert = true;
+    private StringBuffer verificationErrors = new StringBuffer();
+    JavascriptExecutor js;
     @Given("I'm on {} page")
     public void iMOnPage(String arg0) {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\kuntsev\\Documents\\univer\\2022\\TA\\chromedriver_win32\\chromedriver.exe");
+        driver = new ChromeDriver();
+        baseUrl = "https://www.google.com/";
+        //driver.manage().timeouts().implicitlyWait(60);
+        js = (JavascriptExecutor) driver;
+        driver.get(arg0);
     }
 
     @And("fill {string} with {}")
