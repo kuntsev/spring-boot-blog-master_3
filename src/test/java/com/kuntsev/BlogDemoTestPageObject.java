@@ -37,7 +37,7 @@ public class BlogDemoTestPageObject {
         driver.quit();
         String verificationErrorString = verificationErrors.toString();
         if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
+            Assert.fail(verificationErrorString);
         }
     }
 
