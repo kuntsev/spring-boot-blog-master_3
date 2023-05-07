@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "16610764-dc2c-433c-aa99-a1de912bbd95",
+		"name": "TA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/login?username=user&password=password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "user"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPost",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/createComment?title=!!!Test Post for API test&body=test test test&user=1&id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"createComment"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "!!!Test Post for API test"
+						},
+						{
+							"key": "body",
+							"value": "test test test"
+						},
+						{
+							"key": "user",
+							"value": "1"
+						},
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddComment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "body",
+							"value": "test_comment_API",
+							"type": "default"
+						},
+						{
+							"key": "post",
+							"value": "14",
+							"type": "default"
+						},
+						{
+							"key": "user",
+							"value": "1",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8090/createComment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"createComment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
